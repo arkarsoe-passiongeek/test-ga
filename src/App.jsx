@@ -1,10 +1,22 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import ReactGA from "react-ga4";
 
 function App() {
   const [count, setCount] = useState(0)
+  
+  useEffect(() => {
+    ReactGA.initialize("G-M1B3F0L153");
+
+    ReactGA.send({
+      hitType: "pageview",
+      page: window.location.pathname + window.location.search,
+      title: 'App.jsx',
+    });
+  }
+  , []);
 
   return (
     <>
